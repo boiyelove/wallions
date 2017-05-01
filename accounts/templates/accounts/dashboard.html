@@ -1,0 +1,30 @@
+{% extends 'accounts/inside.html' %}
+
+{% block inside_html %}
+<div id="dashboard" class="row">
+	<div class="container">
+		<div class="row text-center">
+		 <div class="col-md-6">
+		  	
+			<div class="box-link-md-white">
+				<strong>revenupa.org/{% if request.user.is_authenticated %}{{request.user.username }} {% endif %}</strong>
+				<hr/>
+				<h4 class="text-left">Revenupa noticed users were stacking accounts to grow their bonus. Revenpa does not want this, as a result, referral bonuses have been cancelled. Onward, no bonus will be  offered for referral. However feel free to refer a friend to revenupa, we will note this. Your referral links is stated above
+				</h4>
+				<br>
+				
+				</div>
+
+
+		</div>
+		  <div class="col-md-6">
+
+			<a class="box-link-md-white" href="{% url 'cmdapp:pledgetransactions' %}">Start Donating</a>
+		</div>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% load staticfiles %}
+{% for img in imgelist %}
+<figure>
+<img src="{{ img.imgurl }}">
+<figcaption>{{ img.size }}</figcaption>
+</figure>
+
+{% empty %}
+
+{% endfor %}

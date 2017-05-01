@@ -1,0 +1,53 @@
+{% load msgboxtags %}
+
+{% for messg in thisconversation %}
+	<div id="messaging-chat-message">
+	{% if messg |from_me %}
+		<div id="messaging-chat-message-sent">
+	{% else %}
+		<div id="messaging-chat-message-received">
+	{% endif %}
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>messg.text</p>
+	</div>
+	</div>
+{% empty %}
+		<p>There's no ongoing conversation between you and this user</p>
+{% endfor %}
+
+
+<script type="text/javascript">
+
+
+function create_message(){
+	$('#message_form'){
+	$.ajax(
+	type:"POST",
+	url: "url",
+	dataType:'html',
+	async: true,
+	data: {
+	csrfmiddlewaretoken: 'csrftoken'
+	},
+		success function(json) {
+		$('#output').html(jsonmessage),
+		}
+
+	)
+
+	}
+
+
+
+}
+
+$.post( "ajax/test.html", function( data ) {
+  $( ".result" ).html( data );
+});
+
+$("button").click(function(){
+    $.get("demo_test.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+});
+</script>

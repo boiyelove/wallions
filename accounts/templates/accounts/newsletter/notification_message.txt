@@ -1,0 +1,12 @@
+Hello {{user}}
+
+You recently requested a change of password on {{website}}.
+
+This is you new password:
+{{ password }}
+
+
+
+Regards
+
+{{website}} Team

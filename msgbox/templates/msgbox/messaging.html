@@ -1,0 +1,41 @@
+<div id="messaging"> 
+
+
+<div id="messaging-users">
+
+<div id="messaging-users-new-message">
+<a href="javascript:void(0)" onclick="document.getElementById('popup-newmessage').style.display='block';document.getElementById('popupbg').style.display='block'">
+<p>New message</p>
+</a>
+</div>
+
+{% for conv in user}
+<div id="messaging-users-list">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p class="messaging-users-username">Username</p>
+<p class="messaging-users-preview">udttukiorteeuid...</p>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="messaging-chat">
+<!-- Messaging-chat goes here -->
+<div id="converse_{{ coverse_id }}">
+</div>
+
+</div>
+
+
+<form id="messaging-input">
+<input type="text" placeholder="Message...">
+<button type="submit"><i class="material-icons">send</i></button>
+</form>
+
+</div>

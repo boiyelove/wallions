@@ -1,0 +1,222 @@
+{% if request.user.is_authenticted %}
+	<!--Logged in header user menu -->
+	<div id="logged-in-user-panel">
+
+	<div id="logged-in-user-panel-header">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username</p>
+	<p>232 posts</p>
+	<p>666 followers</p>
+	<p>852 favorites</p>
+	</div>
+
+	<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='block';document.getElementById('popupbg').style.display='block'">
+	<div id="logged-in-user-panel-menu" class="hide-mobile">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">notifications_none</i><p>Notifications</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><p>6</p></div>
+	</div>
+	</a>
+
+	<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='block';document.getElementById('logged-in-user-panel').style.display='none'">
+	<div id="logged-in-user-panel-menu" class="hide-desktop">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">notifications_none</i><p>Notifications</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><p>6</p></div>
+	</div>
+	</a>
+
+	<a href="messages.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">email</i><p>Messages</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><p>3</p></div>
+	</div>
+	</a>
+
+	<a href="following.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">check</i><p>Following</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+	</a>
+
+	<a href="upload.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">file_upload</i><p>Upload</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+	</a>
+
+	<a href="profile.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">favorite</i><p>Favorites</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+	</a>
+
+	<a href="profile.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">account_circle</i><p>View Profile</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+	</a>
+
+	<a href="settings.html">
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">settings</i><p>Settings</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+	</a>
+
+	<div id="logged-in-user-panel-menu">
+	<div id="logged-in-user-panel-menu-item"><i class="material-icons">exit_to_app</i><p>Sign Out</p></div>
+	<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+	</div>
+
+	</div>
+	<!--End Logged in header user menu -->
+
+
+
+
+
+	<!--Logged in notification center -->
+	<div id="notification-center">
+	<div id="notification-center-content">
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username favorited your image</p>
+	<p>1 hours ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/05/7999-300x200.jpg"></div>
+	</div>
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username commented on your image</p>
+	<p>8 hours ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/03/6208-300x200.jpg"></div>
+	</div>
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username followed you</p>
+	<p>10 hours ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="follow.png"></div>
+	</div>
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username favorited your image</p>
+	<p>14 hours ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/07/8940-300x450.jpeg"></div>
+	</div>
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+	<p>Username commented on your image</p>
+	<p>1 day ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/05/8443-300x450.jpeg"></div>
+	</div>
+
+	<div id="notification-center-item">
+	<div id="notification-center-item-user">
+	<img src="alert.png">
+	<p>Your image has been removed</p>
+	<p>4 week ago</p>
+	</div>
+	<div id="notification-center-item-image"><img src="alert.png"></div>
+	</div>
+
+	</div>
+
+	<div id="notification-center-buttons">
+	<p>Clear Notifications</p>
+
+	<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='none';document.getElementById('logged-in-user-panel').style.display='none';document.getElementById('popupbg').style.display='none'">
+	<p class="notification-center-buttons-close">Close</p>
+	</a>
+	</div>
+
+	</div>
+	<!--End Logged in notification center -->
+
+
+
+{% else %}
+
+	<!-- User Portal -->
+	<div id="user-portal">
+
+	<!--Login-->
+	<div id="SignIn" class="user-portal-content" style="display: block;">
+	    <form>
+	    <i class="material-icons">account_circle</i>
+	    <input type="email" name="usernameoremail" placeholder="Username or Email">
+	    <i class="material-icons">lock</i>
+	    <input type="password" name="password" placeholder="Password">
+	    <input type="submit" value="Sign In" >
+	    </form>
+	    <a href="#" class="tablinks" onclick="openUserPortal(event, 'ForgotPassword')">Forgot Password?</a>
+	</div>
+	<!--/Login-->
+
+
+	<!--Sign Up-->
+	<div id="SignUp" class="user-portal-content">
+	    <form>
+	    <i class="material-icons">person</i>
+	    <input type="text" name="username" placeholder="Username">
+	    <i class="material-icons">email</i>
+	    <input type="email" name="email" placeholder="Email">
+	    <i class="material-icons">lock</i>
+	    <input type="password" name="password" placeholder="Password">
+	    <input type="submit" value="Sign up">
+	    </form>
+	    <a href="#" class="more">Terms and conditions</a>
+	</div>
+	<!--/Sign Up-->
+
+
+	<!--Lost Password-->
+	<div id="ForgotPassword" class="user-portal-content">
+	    <form>
+	    <i class="material-icons">error</i>
+	    <input type="email" name="usernameoremail" placeholder="Username or Email">
+	    <input type="submit" value="Recover">
+	    </form>
+	</div>
+	<!--/Lost Password-->
+
+	<div id="user-portal-tabs">
+	<a href="#" class="tablinks" onclick="openUserPortal(event, 'SignIn')">Sign In</a>
+	<a href="#" class="tablinks tablinksright" onclick="openUserPortal(event, 'SignUp')">Sign Up</a>
+	</div>
+
+	</div>
+{% endif %}
+
+	<script>
+	function openUserPortal(evt, portalTab) {
+	    var i, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("user-portal-content");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+	    document.getElementById(portalTab).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+	</script>
+	<!-- End User Portal -->

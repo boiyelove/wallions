@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="wot-verification" content="040e1e57cd78180733e6"/>
+<meta name="google-site-verification" content="NDq6a9h-ktZ1siPSL2qsD-Gt3IdUkhZ049hGjx4-6k8" />
+<meta http-equiv="content-language" content="en-us" />
+<meta name="contact" content="wallions.com/contact" />
+<meta name="copyright" content="Copyright (c)2016 Wallions. All Rights Reserved." />
+<link rel="stylesheet" type="text/css" href="/static/core/style.css" title="default" />
+<link rel="night stylesheet" type="text/css" href="/static/core/night.css" title="night" />
+<script type="text/javascript" src="/static/core/styleswitcher.js"></script>
+<link rel="icon" href="/favicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon-precomposed" sizes="100x100" href="/favicon.png" />
+<title>Wallions - Wallpapers for billions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('nav').style.display='block';document.getElementById('popupbg').style.display='block'">
+<span class="header-nav-button"><i class="material-icons">menu</i></span>
+</a>
+
+<div id="logo">
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="30" viewBox="0 0 500.000000 300.000000" preserveAspectRatio="xMidYMid meet">
+<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#555555" stroke="none">
+<path d="M310 2745 c246 -429 1494 -2565 1499 -2565 3 0 83 133 176 295 139
+240 172 292 181 279 7 -8 85 -141 174 -294 89 -154 165 -280 168 -280 4 0 84
+133 177 295 139 240 172 292 181 279 7 -8 85 -141 174 -294 89 -154 165 -280
+168 -280 4 0 332 562 730 1248 845 1458 778 1343 755 1316 -10 -12 -346 -497
+-748 -1077 -401 -581 -733 -1057 -736 -1057 -8 0 -231 320 -236 340 -3 11 731
+1292 1019 1780 61 102 -60 -68 -562 -795 -303 -440 -557 -806 -564 -812 -9
+-10 -41 30 -146 183 -74 107 -134 199 -133 203 1 4 155 273 343 597 188 324
+351 605 362 624 46 81 -32 -29 -397 -558 -209 -303 -384 -550 -389 -549 -5 2
+-184 255 -398 563 -214 307 -396 568 -404 579 -24 32 20 -45 383 -669 189
+-325 342 -595 339 -600 -12 -28 -264 -381 -270 -379 -4 1 -266 375 -582 830
+-317 455 -578 830 -581 833 -8 6 -45 71 554 -959 277 -476 502 -867 501 -871
+-9 -20 -234 -340 -239 -340 -3 0 -343 485 -754 1078 -412 592 -753 1082 -758
+1087 -6 6 0 -8 13 -30z m2325 -1589 c63 -110 114 -202 113 -206 -9 -19 -234
+-340 -239 -340 -12 0 -233 326 -234 345 0 26 227 417 236 408 4 -5 60 -98 124
+-207z"/>
+</g>
+</svg>
+</div>
+
+<form id="header-search" class="hide-mobile">
+<button type="submit"><i class="material-icons">search</i></button>
+<input type="text" placeholder="Search" maxlength="40" required="required"/>
+</form>
+
+<div id="header-right">
+<a href = "javascript:void(0)" onclick = "document.getElementById('logged-in-user-panel').style.display='block';document.getElementById('popupbg').style.display='block'">
+<span class="header-right-count">9</span>
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+</a>
+</div>
+
+<div id="header-user-portal" class="hide-mobile">
+<a href = "javascript:void(0)" onclick = "document.getElementById('user-portal').style.display='block';document.getElementById('popupbg').style.display='block'">
+<i class="material-icons">account_circle</i>
+</a>
+</div>
+
+</header>
+
+
+
+
+
+
+<div id="upload">
+
+<img id="output_image"/>
+
+<form enctype="multipart/form-data" action='.' method='post'>
+{% csrf_token %}
+{{ form.image }}
+{{ form.image.errors.as_text }}
+
+{{ form.description }}
+{{ form.description.errors.as_text }}
+
+
+<div id="select-orientation">
+<input id="id_category_name_0" {% if form.category_name == "Landscape" %}checked="checked" {% endif %} name="category_name" type="radio" value="Landscape" required="">
+<label for="id_category_name_0">
+<i class="material-icons">crop_landscape</i>
+<p>Landscape</p>
+</label>
+
+<input id="id_category_name_1"  {% if form.category_name == "Portrait" %}checked="checked" {% endif %}  name="category_name" type="radio" value="Portrait" required="">
+<label for="id_category_name_1">
+<i class="material-icons">crop_portrait</i>
+<p>Portrait</p>
+</label>
+
+<input id="id_category_name_2"  {% if form.category_name == "Square" %}checked="checked" {% endif %}  name="category_name" type="radio" value="Square" required="">
+<label for="id_category_name_2">
+<i class="material-icons">crop_square</i>
+<p>Square</p>
+</label>
+<p>{{ form.category_name.errors.as_text }}</p>
+</div>
+
+<input type="submit" value="Post">
+</form>
+
+
+<a href="#"><p>Please read our guidlines HERE before you upload.</p></a>
+</div>
+
+
+
+
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Filters -->
+<div id="popup-filters">
+<div id="popup-filters-body">
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Sort by</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="newest">Newest</option>
+  <option value="random">Random</option>
+  <option value="most-viewed">Most Viewed</option>
+  <option value="most-favorited">Most Favorited</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Filter by</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="images">Images</option>
+  <option value="users">Users</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Orientation</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="newest">All</option>
+  <option value="random">Landscape</option>
+  <option value="most-viewed">Portrait</option>
+  <option value="most-favorited">Square</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Resolution</p></div>
+<div id="sorting-filters-right" class="sorting-resolution"><input type="text" maxlength="5"> x <input type="text" maxlength="5"></div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Aspect Ratio</p></div>
+<div id="sorting-filters-right" class="sorting-ratio"><input type="text" maxlength="2"> : <input type="text" maxlength="2"></div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border hide-mobile">
+<div id="sorting-filters-left"><p>Change Layout</p></div>
+<div id="sorting-filters-right" class="sorting-layout">
+<i class="material-icons">view_comfy</i>
+<i class="material-icons">view_compact</i>
+</div>
+</div>
+
+
+<div id="sorting-filters">
+<div id="sorting-filters-left"><p>Night Mode</p></div>
+<div id="sorting-filters-right" class="sorting-layout">
+<a href="#" onclick="setActiveStyleSheet('night'); return false;"><i class="material-icons">check</i></a>
+<a href="#" onclick="setActiveStyleSheet('default'); return false;"><i class="material-icons">clear</i></a>
+</div>
+</div>
+
+
+</div>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('popup-filters').style.display='none';document.getElementById('popupbg').style.display='none'">
+<div id="sorting-filters-close" class="hide-desktop"><p>Close</p></div>
+</a>
+
+</div>
+<!-- End Filters -->
+
+
+
+
+
+<!-- Mobile Search -->
+<form id="mobile-search" class="hide-desktop">
+<button type="submit"><i class="material-icons">search</i></button>
+<input type="text" placeholder="Search" maxlength="40" required="required"/>
+</form>
+<!-- End Mobile Search -->
+
+
+
+
+
+
+<!-- NAV -->
+<nav id="nav">
+
+<a href="index.html">
+<div class="nav-item"><i class="material-icons">home</i><p>Home</p></div>
+</a>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('popup-filters').style.display='block';document.getElementById('nav').style.display='none'">
+<div class="nav-item hide-desktop"><i class="material-icons">sort</i><p>Sorting</p></div>
+</a>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('mobile-search').style.display='block';document.getElementById('nav').style.display='none'">
+<div class="nav-item hide-desktop"><i class="material-icons">search</i><p>Search</p></div>
+</a>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('user-portal').style.display='block';document.getElementById('nav').style.display='none'">
+<div class="nav-item hide-desktop"><i class="material-icons">account_circle</i><p>Sign In / Sign Up</p></div>
+</a>
+
+<a href="Information.html">
+<div class="nav-item"><i class="material-icons">info_outline</i><p>Information</p></div>
+</a>
+
+<div id="nav-social">
+
+<a href="https://youtube.com/wallions">
+<svg enable-background="new 0 0 128 128" height="128px" id="Layer_1" version="1.1" viewBox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle cx="64" cy="64" fill="#CC191E" r="64"></circle></g><path d="M103.201,48.004c0,0-0.781-5.513-3.18-7.939c-3.043-3.187-6.453-3.203-8.016-3.389  c-11.191-0.81-27.988-0.81-27.988-0.81h-0.036c0,0-16.795,0-27.988,0.81c-1.564,0.186-4.972,0.201-8.015,3.389  c-2.399,2.426-3.18,7.939-3.18,7.939S24,54.478,24,60.953v6.071c0,6.471,0.799,12.947,0.799,12.947s0.781,5.51,3.18,7.938  c3.044,3.189,7.041,3.088,8.82,3.422c6.401,0.615,27.202,0.805,27.202,0.805s16.81-0.025,28.005-0.834  c1.564-0.188,4.975-0.203,8.016-3.391c2.4-2.43,3.182-7.939,3.182-7.939S104,73.496,104,67.023v-6.071  C104,54.478,103.201,48.004,103.201,48.004 M54.729,75.428l-0.003-24.581l23.637,12.332L54.729,75.428z" fill="#FFFFFF"></path></svg>
+</a>
+
+<a href="https://facebook.com/wallions">
+<svg id="Capa_1" style="enable-background:new 0 0 112.196 112.196;" version="1.1" viewBox="0 0 112.196 112.196" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle cx="56.098" cy="56.098" r="56.098" style="fill:#3B5998;"></circle><path d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34   c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z" style="fill:#FFFFFF;"></path></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+</a>
+
+<a href="https://instagram.com/wallionscom">
+<svg enable-background="new 0 0 128 128" height="128px" id="Layer_1" version="1.1" viewBox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><linearGradient gradientTransform="matrix(1 0 0 -1 594 633)" gradientUnits="userSpaceOnUse" id="SVGID_1_" x1="-566.7114" x2="-493.2875" y1="516.5693" y2="621.4296"><stop offset="0" style="stop-color:#FFB900"></stop><stop offset="1" style="stop-color:#9100EB"></stop></linearGradient><circle cx="64" cy="64" fill="url(#SVGID_1_)" r="64"></circle></g><g><g><path d="M82.333,104H45.667C33.72,104,24,94.281,24,82.333V45.667C24,33.719,33.72,24,45.667,24h36.666    C94.281,24,104,33.719,104,45.667v36.667C104,94.281,94.281,104,82.333,104z M45.667,30.667c-8.271,0-15,6.729-15,15v36.667    c0,8.271,6.729,15,15,15h36.666c8.271,0,15-6.729,15-15V45.667c0-8.271-6.729-15-15-15H45.667z" fill="#FFFFFF"></path></g><g><path d="M64,84c-11.028,0-20-8.973-20-20c0-11.029,8.972-20,20-20s20,8.971,20,20C84,75.027,75.028,84,64,84z     M64,50.667c-7.352,0-13.333,5.981-13.333,13.333c0,7.353,5.981,13.333,13.333,13.333S77.333,71.353,77.333,64    C77.333,56.648,71.353,50.667,64,50.667z" fill="#FFFFFF"></path></g><g><circle cx="85.25" cy="42.75" fill="#FFFFFF" r="4.583"></circle></g></g></svg>
+</a>
+
+<a href="https://twitter.com/WallionsCOM">
+<svg enable-background="new 0 0 48 48" id="Layer_1" version="1.1" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><circle cx="24" cy="24" fill="#1CB7EB" r="24"></circle><g><g><path d="M36.8,15.4c-0.9,0.5-2,0.8-3,0.9c1.1-0.7,1.9-1.8,2.3-3.1c-1,0.6-2.1,1.1-3.4,1.4c-1-1.1-2.3-1.8-3.8-1.8    c-2.9,0-5.3,2.5-5.3,5.7c0,0.4,0,0.9,0.1,1.3c-4.4-0.2-8.3-2.5-10.9-5.9c-0.5,0.8-0.7,1.8-0.7,2.9c0,2,0.9,3.7,2.3,4.7    c-0.9,0-1.7-0.3-2.4-0.7c0,0,0,0.1,0,0.1c0,2.7,1.8,5,4.2,5.6c-0.4,0.1-0.9,0.2-1.4,0.2c-0.3,0-0.7,0-1-0.1    c0.7,2.3,2.6,3.9,4.9,3.9c-1.8,1.5-4.1,2.4-6.5,2.4c-0.4,0-0.8,0-1.3-0.1c2.3,1.6,5.1,2.6,8.1,2.6c9.7,0,15-8.6,15-16.1    c0-0.2,0-0.5,0-0.7C35.2,17.6,36.1,16.6,36.8,15.4z" fill="#FFFFFF"></path></g></g></svg>
+</a>
+
+<a href="https://soundcloud.com/wallions">
+<svg id="Capa_1" style="enable-background:new 0 0 112.196 112.196;" version="1.1" viewBox="0 0 112.196 112.196" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle cx="56.098" cy="56.098" r="56.098" style="fill:#FF6A22;"></circle><g><path d="M16.707,68.833c-0.027,0.182-0.157,0.312-0.326,0.312c-0.169,0-0.299-0.13-0.325-0.316    l-0.593-4.438l0.593-4.512c0.025-0.188,0.155-0.318,0.325-0.318c0.168,0,0.298,0.13,0.326,0.318l0.706,4.517L16.707,68.833z     M19.728,71.529c-0.028,0.193-0.168,0.328-0.341,0.328c-0.168,0-0.315-0.135-0.338-0.328l-0.798-7.139l0.798-7.299    c0.024-0.188,0.17-0.328,0.338-0.328c0.173,0,0.313,0.137,0.341,0.328l0.908,7.299L19.728,71.529z M22.988,72.738    c-0.023,0.232-0.197,0.397-0.406,0.397c-0.216,0-0.387-0.165-0.408-0.397l-0.757-8.342l0.757-8.659    c0.019-0.235,0.192-0.403,0.408-0.403c0.209,0,0.382,0.168,0.406,0.403l0.859,8.659L22.988,72.738z M26.28,73.003    c-0.024,0.266-0.232,0.467-0.479,0.467c-0.253,0-0.46-0.201-0.481-0.467l-0.715-8.607l0.715-8.897    c0.021-0.268,0.228-0.469,0.481-0.469c0.247,0,0.455,0.201,0.479,0.469l0.811,8.897L26.28,73.003z M29.59,73.072    c-0.017,0.309-0.258,0.538-0.543,0.538c-0.294,0-0.527-0.229-0.547-0.538l-0.676-8.677l0.676-8.254    c0.021-0.307,0.253-0.536,0.547-0.536c0.29,0,0.526,0.229,0.543,0.532l0.766,8.258L29.59,73.072z M32.932,73.077v-0.005    c-0.02,0.342-0.291,0.612-0.617,0.612c-0.327,0-0.598-0.271-0.617-0.607l-0.631-8.677l0.631-13.429    c0.019-0.342,0.29-0.612,0.617-0.612c0.327,0,0.598,0.271,0.617,0.607l0.715,13.434L32.932,73.077z M36.249,73.072v-0.005    c-0.02,0.378-0.319,0.679-0.689,0.679c-0.363,0-0.663-0.301-0.681-0.679l-0.596-8.621l0.596-16.501    c0.018-0.378,0.318-0.677,0.681-0.677c0.37,0,0.669,0.299,0.689,0.677l0.671,16.501L36.249,73.072z M39.69,72.939v-0.005    c-0.015,0.421-0.346,0.748-0.753,0.748c-0.407,0-0.738-0.327-0.753-0.743l-0.553-8.533c0,0,0.553-17.876,0.553-17.881    c0.016-0.416,0.346-0.749,0.753-0.749c0.407,0,0.739,0.333,0.753,0.749l0.625,17.881L39.69,72.939z M43.111,72.882    c-0.016,0.458-0.375,0.817-0.822,0.817c-0.448,0-0.807-0.359-0.823-0.813l-0.516-8.482l0.516-18.478    c0.016-0.46,0.375-0.818,0.823-0.818c0.447,0,0.807,0.358,0.822,0.818l0.573,18.478L43.111,72.882z M46.554,72.807v-0.005    c-0.016,0.495-0.403,0.888-0.894,0.888c-0.484,0-0.879-0.393-0.888-0.883l-0.474-8.401L44.767,46.4    c0.014-0.502,0.408-0.89,0.893-0.89c0.491,0,0.878,0.388,0.894,0.89l0.532,18.006L46.554,72.807z M50.025,72.757V72.75    c-0.008,0.539-0.434,0.954-0.96,0.954c-0.53,0-0.95-0.415-0.966-0.947l-0.428-8.352L48.1,47.058    c0.016-0.538,0.436-0.959,0.966-0.959c0.526,0,0.952,0.421,0.96,0.959l0.485,17.352L50.025,72.757z M53.566,71.876l-0.043,0.818    c-0.005,0.285-0.125,0.543-0.308,0.729c-0.188,0.183-0.446,0.3-0.719,0.3c-0.318,0-0.598-0.146-0.79-0.376    c-0.142-0.167-0.23-0.383-0.24-0.61c-0.003-0.01-0.003-0.023-0.003-0.037c0,0-0.395-8.286-0.395-8.3l0.39-20.443l0.005-0.196    c0.003-0.358,0.193-0.677,0.477-0.86c0.159-0.106,0.347-0.168,0.557-0.168c0.206,0,0.401,0.064,0.564,0.177    c0.277,0.185,0.458,0.496,0.463,0.852l0.434,20.648L53.566,71.876z M57.007,72.587v-0.01c-0.007,0.604-0.502,1.096-1.1,1.096    c-0.6,0-1.094-0.492-1.1-1.091l-0.227-4.03l-0.223-4.138l0.45-22.406v-0.113c0.001-0.34,0.161-0.644,0.408-0.849    c0.189-0.155,0.432-0.249,0.692-0.249c0.207,0,0.399,0.057,0.563,0.153c0.313,0.196,0.532,0.543,0.542,0.94l0.487,22.523    L57.007,72.587z M86.74,73.695c0,0-27.683,0-27.712,0c-0.598-0.061-1.071-0.537-1.081-1.15V40.821    c0.01-0.584,0.211-0.885,0.963-1.174c1.941-0.752,4.139-1.196,6.398-1.196c9.215,0,16.766,7.069,17.567,16.074    c1.186-0.495,2.496-0.777,3.865-0.777c5.518,0,9.992,4.476,9.992,9.998C96.732,69.267,92.258,73.695,86.74,73.695L86.74,73.695z" style="fill:#F1F2F2;"></path></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+</a>
+
+<a href="https://google.com/+wallions">
+<svg id="Capa_1" style="enable-background:new 0 0 112.196 112.196;" version="1.1" viewBox="0 0 112.196 112.196" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><circle cx="56.098" cy="56.097" id="XMLID_30_" r="56.098" style="fill:#DC4E41;"></circle></g><g><path d="M19.531,58.608c-0.199,9.652,6.449,18.863,15.594,21.867c8.614,2.894,19.205,0.729,24.937-6.648    c4.185-5.169,5.136-12.06,4.683-18.498c-7.377-0.066-14.754-0.044-22.12-0.033c-0.012,2.628,0,5.246,0.011,7.874    c4.417,0.122,8.835,0.066,13.252,0.155c-1.115,3.821-3.655,7.377-7.51,8.757c-7.443,3.28-16.94-1.005-19.282-8.813    c-2.827-7.477,1.801-16.5,9.442-18.675c4.738-1.667,9.619,0.21,13.673,2.673c2.054-1.922,3.976-3.976,5.864-6.052    c-4.606-3.854-10.525-6.217-16.61-5.698C29.526,35.659,19.078,46.681,19.531,58.608z" style="fill:#DC4E41;"></path><path d="M79.102,48.668c-0.022,2.198-0.045,4.407-0.056,6.604c-2.209,0.022-4.406,0.033-6.604,0.044    c0,2.198,0,4.384,0,6.582c2.198,0.011,4.407,0.022,6.604,0.045c0.022,2.198,0.022,4.395,0.044,6.604c2.187,0,4.385-0.011,6.582,0    c0.012-2.209,0.022-4.406,0.045-6.615c2.197-0.011,4.406-0.022,6.604-0.033c0-2.198,0-4.384,0-6.582    c-2.197-0.011-4.406-0.022-6.604-0.044c-0.012-2.198-0.033-4.407-0.045-6.604C83.475,48.668,81.288,48.668,79.102,48.668z" style="fill:#DC4E41;"></path><g><path d="M19.531,58.608c-0.453-11.927,9.994-22.949,21.933-23.092c6.085-0.519,12.005,1.844,16.61,5.698     c-1.889,2.077-3.811,4.13-5.864,6.052c-4.054-2.463-8.935-4.34-13.673-2.673c-7.642,2.176-12.27,11.199-9.442,18.675     c2.342,7.808,11.839,12.093,19.282,8.813c3.854-1.38,6.395-4.936,7.51-8.757c-4.417-0.088-8.835-0.033-13.252-0.155     c-0.011-2.628-0.022-5.246-0.011-7.874c7.366-0.011,14.743-0.033,22.12,0.033c0.453,6.439-0.497,13.33-4.683,18.498     c-5.732,7.377-16.322,9.542-24.937,6.648C25.981,77.471,19.332,68.26,19.531,58.608z" style="fill:#FFFFFF;"></path><path d="M79.102,48.668c2.187,0,4.373,0,6.57,0c0.012,2.198,0.033,4.407,0.045,6.604     c2.197,0.022,4.406,0.033,6.604,0.044c0,2.198,0,4.384,0,6.582c-2.197,0.011-4.406,0.022-6.604,0.033     c-0.022,2.209-0.033,4.406-0.045,6.615c-2.197-0.011-4.396,0-6.582,0c-0.021-2.209-0.021-4.406-0.044-6.604     c-2.197-0.023-4.406-0.033-6.604-0.045c0-2.198,0-4.384,0-6.582c2.198-0.011,4.396-0.022,6.604-0.044     C79.057,53.075,79.079,50.866,79.102,48.668z" style="fill:#FFFFFF;"></path></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+</a>
+
+<a href="https://flickr.com/wallions">
+<svg id="Capa_1" style="enable-background:new 0 0 112.195 112.195;" version="1.1" viewBox="0 0 112.195 112.195" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M56.101,112.192c30.976,0,56.095-25.115,56.095-56.096c0-30.978-25.119-56.093-56.095-56.093   C25.116,0.003,0,25.119,0,56.096C0,87.077,25.116,112.192,56.101,112.192" style="fill:#FF0084;"></path><g><path d="M84.246,56.096c0,6.849-5.547,12.401-12.396,12.401c-6.859,0-12.406-5.553-12.406-12.401    c0-6.847,5.547-12.4,12.406-12.4C78.699,43.696,84.246,49.25,84.246,56.096z" style="fill:#F1F2F2;"></path><path d="M52.749,56.096c0,6.849-5.547,12.401-12.406,12.401c-6.847,0-12.394-5.553-12.394-12.401    c0-6.847,5.547-12.4,12.394-12.4C47.202,43.696,52.749,49.25,52.749,56.096z" style="fill:#F1F2F2;"></path></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+</a>
+
+</div>
+</nav>
+<!-- End NAV -->
+
+
+
+
+
+<!--Logged in header user menu -->
+<div id="logged-in-user-panel">
+
+<div id="logged-in-user-panel-header">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username</p>
+<p>232 posts</p>
+<p>666 followers</p>
+<p>852 favorites</p>
+</div>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='block';document.getElementById('popupbg').style.display='block'">
+<div id="logged-in-user-panel-menu" class="hide-mobile">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">notifications_none</i><p>Notifications</p></div>
+<div id="logged-in-user-panel-menu-item-right"><p>6</p></div>
+</div>
+</a>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='block';document.getElementById('logged-in-user-panel').style.display='none'">
+<div id="logged-in-user-panel-menu" class="hide-desktop">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">notifications_none</i><p>Notifications</p></div>
+<div id="logged-in-user-panel-menu-item-right"><p>6</p></div>
+</div>
+</a>
+
+<a href="messages.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">email</i><p>Messages</p></div>
+<div id="logged-in-user-panel-menu-item-right"><p>3</p></div>
+</div>
+</a>
+
+<a href="following.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">check</i><p>Following</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+</a>
+
+<a href="upload.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">file_upload</i><p>Upload</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+</a>
+
+<a href="profile.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">favorite</i><p>Favorites</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+</a>
+
+<a href="profile.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">account_circle</i><p>View Profile</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+</a>
+
+<a href="settings.html">
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">settings</i><p>Settings</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+</a>
+
+<div id="logged-in-user-panel-menu">
+<div id="logged-in-user-panel-menu-item"><i class="material-icons">exit_to_app</i><p>Sign Out</p></div>
+<div id="logged-in-user-panel-menu-item-right"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>
+
+</div>
+<!--End Logged in header user menu -->
+
+
+
+
+
+<!--Logged in notification center -->
+<div id="notification-center">
+<div id="notification-center-content">
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username favorited your image</p>
+<p>1 hours ago</p>
+</div>
+<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/05/7999-300x200.jpg"></div>
+</div>
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username commented on your image</p>
+<p>8 hours ago</p>
+</div>
+<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/03/6208-300x200.jpg"></div>
+</div>
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username followed you</p>
+<p>10 hours ago</p>
+</div>
+<div id="notification-center-item-image"><img src="follow.png"></div>
+</div>
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username favorited your image</p>
+<p>14 hours ago</p>
+</div>
+<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/07/8940-300x450.jpeg"></div>
+</div>
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
+<p>Username commented on your image</p>
+<p>1 day ago</p>
+</div>
+<div id="notification-center-item-image"><img src="http://wallions.com/wp-content/uploads/2016/05/8443-300x450.jpeg"></div>
+</div>
+
+<div id="notification-center-item">
+<div id="notification-center-item-user">
+<img src="alert.png">
+<p>Your image has been removed</p>
+<p>4 week ago</p>
+</div>
+<div id="notification-center-item-image"><img src="alert.png"></div>
+</div>
+
+</div>
+
+<div id="notification-center-buttons">
+<p>Clear Notifications</p>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('notification-center').style.display='none';document.getElementById('logged-in-user-panel').style.display='none';document.getElementById('popupbg').style.display='none'">
+<p class="notification-center-buttons-close">Close</p>
+</a>
+</div>
+
+</div>
+<!--End Logged in notification center -->
+
+
+
+
+
+<!-- User Portal -->
+<div id="user-portal">
+
+<!--Login-->
+<div id="SignIn" class="user-portal-content" style="display: block;">
+    <form>
+    <i class="material-icons">account_circle</i>
+    <input type="email" name="usernameoremail" placeholder="Username or Email">
+    <i class="material-icons">lock</i>
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Sign In" >
+    </form>
+    <a href="#" class="tablinks" onclick="openUserPortal(event, 'ForgotPassword')">Forgot Password?</a>
+</div>
+<!--/Login-->
+
+
+<!--Sign Up-->
+<div id="SignUp" class="user-portal-content">
+    <form>
+    <i class="material-icons">person</i>
+    <input type="text" name="username" placeholder="Username">
+    <i class="material-icons">email</i>
+    <input type="email" name="email" placeholder="Email">
+    <i class="material-icons">lock</i>
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Sign up">
+    </form>
+    <a href="#" class="more">Terms and conditions</a>
+</div>
+<!--/Sign Up-->
+
+
+<!--Lost Password-->
+<div id="ForgotPassword" class="user-portal-content">
+    <form>
+    <i class="material-icons">error</i>
+    <input type="email" name="usernameoremail" placeholder="Username or Email">
+    <input type="submit" value="Recover">
+    </form>
+</div>
+<!--/Lost Password-->
+
+<div id="user-portal-tabs">
+<a href="#" class="tablinks" onclick="openUserPortal(event, 'SignIn')">Sign In</a>
+<a href="#" class="tablinks tablinksright" onclick="openUserPortal(event, 'SignUp')">Sign Up</a>
+</div>
+
+</div>
+
+<script>
+function openUserPortal(evt, portalTab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("user-portal-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(portalTab).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+<!-- End User Portal -->
+
+
+
+
+
+
+
+
+
+
+
+<a href = "javascript:void(0)" onclick = "
+document.getElementById('popup-filters').style.display='none';
+document.getElementById('user-portal').style.display='none';
+document.getElementById('notification-center').style.display='none';
+document.getElementById('logged-in-user-panel').style.display='none';
+document.getElementById('mobile-search').style.display='none';
+document.getElementById('nav').style.display='none';
+document.getElementById('popupbg').style.display='none'
+">
+<div id="popupbg"></div>
+</a>
+
+
+
+
+</body>
+</html>
