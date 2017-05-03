@@ -15,7 +15,7 @@ def verifyandcreateprofile(instance, created, sender, **kwargs):
 		if not instance.is_staff and settings.VERIFY_EMAILS:
 			instance.is_active = False
 			instance.save()
-	verify_email(instance.email, action=reverse_lazy('accounts:userprofile'))
+			verify_email(instance.email, action=reverse_lazy('accounts:userprofile'))
 
 
 

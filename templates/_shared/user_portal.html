@@ -1,0 +1,78 @@
+
+
+<!-- User Portal -->
+<div id="user-portal">
+
+<!--Login-->
+<div id="SignIn" class="user-portal-content" style="display: block;">
+    <form method="post" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+    <i class="material-icons">account_circle</i>
+    <input type="email" name="usernameoremail" placeholder="Username or Email">
+    <i class="material-icons">lock</i>
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Sign In" >
+    </form>
+    <a href="#" class="tablinks" onclick="openUserPortal(event, 'ForgotPassword')">Forgot Password?</a>
+</div>
+<!--/Login-->
+
+
+<!--Sign Up-->
+<div id="SignUp" class="user-portal-content">
+    <form method="post" action="{% url 'accounts:register' %}">
+    {% csrf_token %}
+    <i class="material-icons">person</i>
+    <input type="text" name="username" placeholder="Username" required>
+    <i class="material-icons">email</i>
+    <input type="email" name="email" placeholder="Email" required>
+    <i class="material-icons">email</i>
+    <input type="email" name="email_again" placeholder="Email Again" required>
+    <i class="material-icons">lock</i>
+    <input type="password" name="password" placeholder="Password" required>
+    <i class="material-icons">lock</i>
+    <input type="password" name="password_again" placeholder="Password Again" required>
+    <input type="submit" value="Sign up">
+    </form>
+    <a href="#" class="more">Terms and conditions</a>
+</div>
+<!--/Sign Up-->
+
+
+<!--Lost Password-->
+<div id="ForgotPassword" class="user-portal-content">
+    <form>
+        {% csrf_token %}
+    <i class="material-icons">error</i>
+    <input type="email" name="usernameoremail" placeholder="Username or Email">
+    <input type="submit" value="Recover">
+    </form>
+</div>
+<!--/Lost Password-->
+
+<div id="user-portal-tabs">
+<a href="#" class="tablinks" onclick="openUserPortal(event, 'SignIn')">Sign In</a>
+<a href="#" class="tablinks tablinksright" onclick="openUserPortal(event, 'SignUp')">Sign Up</a>
+</div>
+
+</div>
+
+<script>
+function openUserPortal(evt, portalTab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("user-portal-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(portalTab).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+<!-- End User Portal -->
+
+
+

@@ -20,9 +20,11 @@ from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('webcore.urls')),
     url(r'^messages/', include('msgbox.urls')),
 	url(r'^', include('imgpost.urls')),
     url(r'^', include('accounts.urls')),
+
 
 ]
 

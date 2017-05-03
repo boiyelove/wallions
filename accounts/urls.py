@@ -5,9 +5,9 @@ from . import views
 app_name="accounts"
 
 urlpatterns = [
-	url(r'^login/$', views.LoginView.as_view(), name="login"),
+	url(r'^signin/$', views.LoginView.as_view(), name="login"),
 	url(r'^logout/$', views.LogoutView.as_view(), name="logout"),
-	url(r'^register/$', views.RegisterView.as_view(), name='register'),
+	url(r'^signup/$', views.RegisterView.as_view(), name='register'),
 	url(r'^ref/(?P<username>[\w-]+)/$', views.GetRef.as_view(), name='get-referral'),
 	url(r'^dashboard/$', views.DashboardView.as_view(), name='dashboard'),
 	url(r'^profile/$', views.UserProfileView.as_view(), name='userprofile'),

@@ -52,7 +52,7 @@ class RegisterForm(forms.Form):
 	email_again = forms.EmailField()
 	password = forms.CharField(min_length=8)
 	password_again = forms.CharField(min_length=8)
-	full_name = forms.CharField(max_length =100, min_length = 3)
+	full_name = forms.CharField(max_length =100, min_length = 3, required = False)
 
 	def clean_username(self):
 		username = self.cleaned_data.get('username')
@@ -97,16 +97,16 @@ class RegisterForm(forms.Form):
 			raise forms.ValidationError('You may not set your name as you passord')
 		return password
 
-	def register_user(self, referral=''):
+	def register_user(self):
 		user = User.objects.create(username = self.cleaned_data.get('username'),
 			 password = self.cleaned_data.get('password'), 
 			 email=self.cleaned_data.get('email'))
 		obj, created = UserProfile.objects.get_or_create(user = user)
-		obj.full_name = self.cleaned_data.get('full_name')
-		try:
-			obj.referral = User.objects.get(username = referral)
-		except:
-			pass
+		full_name = self.cleaned_data.get('full_name')
+		if full_name:
+			obj.full_name = full_name
+		else:
+			obj.full_name = self.cleaned_data.get('username')
 		obj.save()
 
 

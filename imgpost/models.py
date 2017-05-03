@@ -48,8 +48,8 @@ class TaggedItem(TimestampedModel):
 class ImgPost(TimestampedModel):
 	orientation = models.CharField(max_length = 160, choices=ORIENTATION)
 	description = models.TextField(null=True)
-	width = models.PositiveIntegerField(default=1, null=True)
-	height = models.PositiveIntegerField(default=1, null=True)
+	width = models.PositiveIntegerField(default=1, null=True, editable=False)
+	height = models.PositiveIntegerField(default=1, null=True, editable=False)
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	views= models.PositiveIntegerField(default = 0, editable=False)

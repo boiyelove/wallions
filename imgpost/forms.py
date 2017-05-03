@@ -1,5 +1,7 @@
 from django import forms
+from django.core.files.images import get_image_dimensions
 from .models import ORIENTATION, ImgPost
+
 
 class ImgPostForm(forms.Form):
 	description = forms.CharField(widget=forms.TextInput)
@@ -12,6 +14,11 @@ class ImgPostForm(forms.Form):
 		self.fields['description'].widget.attrs = {'placeholder':"Description"}
 
 
+	def clean_image(self):
+		image = self.cleaned_data.get('image')
+		width, height = get_image_dimensions(image)
+		if width < 1000 or width > 10000 or height < 1000 or height > 10000:
+			raise forms.ValidationError('Min Dimension is 1000x1000, Max Dimension is 10,000x10,000')
 
 
 	def done(self):

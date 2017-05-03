@@ -9,7 +9,9 @@
 
 
 
-
+.error-text{
+	color: #e86161 !important;
+}
 
 /* Start Upload */
 #output_image {
@@ -572,6 +574,8 @@
 	margin: 12.5px 0;
 	float: right;
 }
+
+
 
 
 

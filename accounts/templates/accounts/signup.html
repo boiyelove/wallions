@@ -1,0 +1,69 @@
+{% extends '_shared/base.html' %}
+
+{% block main %}
+			<br><br><br><br>
+			<p>
+				<div style="padding:20px; margin:auto; position:relative;" >
+
+					<!--Sign Up-->
+					<div id="SignUp" class="user-portal-content" style="display:block !important; width:300px;; margin-left:auto; margin-right:auto; background-color: #fdfbfb;">
+					    <form method="post" action="{% url 'accounts:register' %}">
+					    {% csrf_token %}
+					    <i class="material-icons {% if form.username.errors %} error-text {% endif %}">person</i>
+					    <input type="text" name="username" placeholder="Username"  {% if form.username.value %} value="{{form.username.value}}" {% endif %} required>
+					    {% if form.username.errors %}
+						    {% for error in form.username.errors %}
+						    	<li class="error-text">{{ error }}</li>
+						    {% endfor %}
+					    {% endif %}
+
+
+
+					    <i class="material-icons {% if form.email.errors %} error-text {% endif %}">email</i>
+					    <input type="email" name="email" placeholder="Email" {% if form.email.value%}value="{{form.email.value}}" {% endif %}required>
+					    {% if form.email.errors %}
+						    {% for error in form.email.errors %}
+						    	<li class="error-text">{{ error }}</li>
+						    {% endfor %}
+					    {% endif %}
+
+
+
+
+					    <i class="material-icons {% if form.email_again.errors %} error-text {% endif %}">email</i>
+					    <input type="email" name="email_again" placeholder="Email Again"  {% if form.email_again.value %} value="{{form.email_again.value}}" {% endif %} required>
+					    {% for error in form.email_again.errors %}
+					    	<li class="error-text">{{ error }}</li>
+					    {% endfor %}
+
+
+
+
+
+
+					    <i class="material-icons {% if form.password.errors %}error-text{% endif %}">lock</i>
+					    <input type="password" name="password" placeholder="Password" required>
+					    {% for error in form.password.errors %}
+					    	<li class="error-text">{{ error }}</li>
+					    {% endfor %}
+
+
+
+
+					    <i class="material-icons {% if form.password_again.errors %}error-text{% endif %}">lock</i>
+					    <input type="password" name="password_again" placeholder="Password Again" required>
+					    {% for error in form.password_again.errors %}
+					    	<li class="error-text">{{ error }}</li>
+					    {% endfor %}
+
+					    
+
+					    <input type="submit" value="Sign up">
+					    </form>
+					    <a href="#" class="more">Terms and conditions</a>
+					</div>
+				</div>
+				<!--/Sign Up-->
+				
+			</p>
+{% endblock %}

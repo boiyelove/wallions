@@ -9,7 +9,7 @@ from django.db.models import F
 
 class CreateImgPost(FormView):
 	form_class = ImgPostForm
-	template_name = 'upload.html'
+	template_name = 'imgpost/upload.html'
 	success_url = "/upload"
 
 

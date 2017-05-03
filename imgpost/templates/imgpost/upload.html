@@ -1,0 +1,64 @@
+{% extends '_shared/base.html' %}
+{% block main %}
+
+{% include '_shared/header.html' %}
+
+<div id="upload">
+
+<img id="output_image"/>
+
+<form enctype="multipart/form-data" action='.' method='post'>
+{% csrf_token %}
+{{ form.image }}
+{{ form.image.errors.as_text }}
+
+{{ form.description }}
+{{ form.description.errors.as_text }}
+
+
+<div id="select-orientation">
+<input id="id_category_name_0" {% if form.category_name == "Landscape" %}checked="checked" {% endif %} name="category_name" type="radio" value="Landscape" required="">
+<label for="id_category_name_0">
+<i class="material-icons">crop_landscape</i>
+<p>Landscape</p>
+</label>
+
+<input id="id_category_name_1"  {% if form.category_name == "Portrait" %}checked="checked" {% endif %}  name="category_name" type="radio" value="Portrait" required="">
+<label for="id_category_name_1">
+<i class="material-icons">crop_portrait</i>
+<p>Portrait</p>
+</label>
+
+<input id="id_category_name_2"  {% if form.category_name == "Square" %}checked="checked" {% endif %}  name="category_name" type="radio" value="Square" required="">
+<label for="id_category_name_2">
+<i class="material-icons">crop_square</i>
+<p>Square</p>
+</label>
+<p>{{ form.category_name.errors.as_text }}</p>
+</div>
+
+<input type="submit" value="Post">
+</form>
+
+
+<a href="#"><p>Please read our guidlines HERE before you upload.</p></a>
+</div>
+
+
+
+
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+
+{% endblock %}

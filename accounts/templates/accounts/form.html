@@ -1,14 +1,30 @@
-{% extends 'webcore/_shared/base.html' %}
+{% extends '_shared/base.html' %}
 
-{% block content %}
-{% include 'webcore/_shared/navbar.html' %}
-
-	<div class="row">
-		<div class="container">
-			<div class="col-md-6">
-				{% include 'form.html' %}
+{% block main %}
+{% include '_shared/header.html' %}
+			<br><br><br><br>
+			<p>
+				<div style="padding:20px; margin:auto; position:relative;" >
+					<!--Sign Up-->
+					<div id="SignUp" class="user-portal-content" style="display:block !important; width:300px;; margin-left:auto; margin-right:auto; background-color: #fdfbfb;">
+					    <form method="post" action="{% url 'accounts:register' %}">
+					    {% csrf_token %}
+					    <i class="material-icons">person</i>
+					    <input type="text" name="username" placeholder="Username" required>
+					    <i class="material-icons">email</i>
+					    <input type="email" name="email" placeholder="Email" required>
+					    <i class="material-icons">email</i>
+					    <input type="email" name="email_again" placeholder="Email Again" required>
+					    <i class="material-icons">lock</i>
+					    <input type="password" name="password" placeholder="Password" required>
+					    <i class="material-icons">lock</i>
+					    <input type="password" name="password_again" placeholder="Password Again" required>
+					    <input type="submit" value="Sign up">
+					    </form>
+					    <a href="#" class="more">Terms and conditions</a>
+					</div>
+				</div>
+				<!--/Sign Up-->
 				
-			</div>
-		</div>
-	</div>
+			</p>
 {% endblock %}

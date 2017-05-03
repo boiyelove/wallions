@@ -39,5 +39,5 @@ def email_password(user, password):
 			"password": password,
 			'user': user,
 		})
-		subject = "New Padlock Information"
+		subject = "Important Account Notice"
 		send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])

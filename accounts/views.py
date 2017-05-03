@@ -56,7 +56,7 @@ class AlreadyLoginedIn:
 
 class LoginView(AlreadyLoginedIn, FormView):
 	form_class = LoginForm
-	template_name = 'accounts/form.html'
+	template_name = 'accounts/signin.html'
 	success_url = reverse_lazy('accounts:dashboard')
 
 	def get_context_data(self, *args, **kwargs):
@@ -90,7 +90,7 @@ class LogoutView(LoginRqMixin, View):
 
 class RegisterView(FormView):
 	form_class = RegisterForm
-	template_name = 'accounts/form.html'
+	template_name = 'accounts/signup.html'
 	success_url = reverse_lazy('accounts:login')
 
 	# def dispatch(self, *args, **kwargs):
@@ -99,22 +99,21 @@ class RegisterView(FormView):
 	# 	super(RegisterView, self)
 
 
-	def get_context_data(self, *args, **kwargs):
-		formlinks = [FormLink('Take me to revenupa.org', reverse_lazy('webcore:home-page')),]
-		context = super(RegisterView, self).get_context_data(*args, **kwargs)
-		context.update({'page_title' : 'Register New Account',
-			'form_title' : 'Create New Account',
-			'form_method': 'POST',
-			'form_value': 'Create my revenupa account',
-			'form_action': reverse_lazy('accounts:register'),
-			'form_cancel': FormLink("I already have a revenupa account", reverse_lazy('accounts:login')),
-			'form_links': formlinks,
-			})
-		return context
+	# def get_context_data(self, *args, **kwargs):
+	# 	formlinks = [FormLink('Take me to revenupa.org', reverse_lazy('webcore:home-page')),]
+	# 	context = super(RegisterView, self).get_context_data(*args, **kwargs)
+	# 	context.update({'page_title' : 'Register New Account',
+	# 		'form_title' : 'Create New Account',
+	# 		'form_method': 'POST',
+	# 		'form_value': 'Create my revenupa account',
+	# 		'form_action': reverse_lazy('accounts:register'),
+	# 		'form_cancel': FormLink("I already have a revenupa account", reverse_lazy('accounts:login')),
+	# 		'form_links': formlinks,
+	# 		})
+	# 	return context
 
 	def form_valid(self, form):
-		referral = self.request.COOKIES.get('referral_id')
-		form.register_user(referral)
+		form.register_user()
 		messages.add_message(self.request, messages.SUCCESS, 'Registration successful')
 		messages.add_message(self.request, messages.INFO, 'An email has been sent to your email address, you can check your spam folder or wait a few minute to receive it')
 		return super(RegisterView, self).form_valid(form)
@@ -126,9 +125,7 @@ class DashboardView(LoginRqMixin, TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(DashboardView, self).get_context_data(**kwargs)
 		context['page_title'] = "Dashboard"
-		context['balance'] = UserToken.objects.get(user = self.request.user)
 		profile = UserProfile.objects.get(user = self.request.user)
-		context['programs'] = profile.programs.all()
 		return context
 
 

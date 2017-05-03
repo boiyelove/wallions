@@ -1,0 +1,67 @@
+{% extends '_shared/base.html' %}
+
+{% block main %}
+
+			<br><br><br><br>
+			<p>
+				<div style="padding:20px; margin:auto; position:relative;" >
+
+					<!--Login-->
+					<div id="SignIn" class="user-portal-content" style="display:block !important; width:300px; margin-left:auto; margin-right:auto; background-color: #fdfbfb;">
+						{% if form.errors %}
+							<ul>
+							{% for err in form.errors %}
+							<li>{{err}}</li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					    <form method="post" action="{% url 'accounts:login' %}">
+					    {% csrf_token %}
+					    <i class="material-icons">account_circle</i>
+					    <input type="email" name="username" placeholder="Username or Email" required>
+					    <i class="material-icons">lock</i>
+					    <input type="password" name="password" placeholder="Password" required>
+					    <input type="submit" value="Sign In" >
+					    </form>
+					   <br>
+					    <br>
+					    <a href="#" class="tablinks" onclick="openUserPortal(event, 'ForgotPassword')">Forgot Password?</a>
+					</div>
+					<!--/Login-->
+
+					<!--Lost Password-->
+					<div id="ForgotPassword" class="user-portal-content" style="width:300px;; margin-left:auto; margin-right:auto; background-color: #fdfbfb;">
+					    <form>
+					    {% csrf_token %}
+					    <i class="material-icons">error</i>
+					    <input type="email" name="usernameoremail" placeholder="Username or Email">
+					    <input type="submit" value="Recover">
+					    </form>
+
+					    <br>
+					    <br>
+					    <a href="#" class="tablinks" onclick="openUserPortal(event, 'SignIn')">Sign In?</a>
+					</div>
+					<!--/Lost Password-->
+
+
+				</div>
+				<!--/center_wrapper-->
+				<script>
+				function openUserPortal(evt, portalTab) {
+				    var i, tabcontent, tablinks;
+				    tabcontent = document.getElementsByClassName("user-portal-content");
+				    for (i = 0; i < tabcontent.length; i++) {
+				        tabcontent[i].style.display = "none";
+				    }
+				    tablinks = document.getElementsByClassName("tablinks");
+				    for (i = 0; i < tablinks.length; i++) {
+				        tablinks[i].className = tablinks[i].className.replace(" active", "");
+				    }
+				    document.getElementById(portalTab).style.display = "block";
+				    evt.currentTarget.className += " active";
+				}
+				</script>
+				
+			</p>
+{% endblock %}

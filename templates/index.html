@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="wot-verification" content="040e1e57cd78180733e6"/>
-<meta name="google-site-verification" content="NDq6a9h-ktZ1siPSL2qsD-Gt3IdUkhZ049hGjx4-6k8" />
-<meta http-equiv="content-language" content="en-us" />
-<meta name="contact" content="wallions.com/contact" />
-<meta name="copyright" content="Copyright (c)2016 Wallions. All Rights Reserved." />
+{% extends '_shared/base.html' %}
 
-
-
-<link rel="stylesheet" type="text/css" href="/static/core/style.css" title="default" />
-<link rel="night stylesheet" type="text/css" href="/static/core/night.css" title="night" />
-<script type="text/javascript" src="/static/core/styleswitcher.js"></script>
-
-
-
-
-<link rel="icon" href="/favicon.png" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon-precomposed" sizes="100x100" href="/favicon.png" />
-<title>Wallions - Wallpapers for billions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script type="text/javascript">
+{% block extrajs %}
     jQuery(document).ready(function($) {
         var count = 2;
         window.total = 282;
@@ -54,182 +29,28 @@
         }
 
     });
+{% endblock %}
 
-</script>
-</head>
-<body>
 
-<header>
-
-<a href = "javascript:void(0)" onclick = "document.getElementById('nav').style.display='block';document.getElementById('popupbg').style.display='block'">
-<span class="header-nav-button"><i class="material-icons">menu</i></span>
-</a>
-
-<div id="logo">
-<svg xmlns="http://www.w3.org/2000/svg" width="83" height="30" viewBox="0 0 500.000000 300.000000" preserveAspectRatio="xMidYMid meet">
-<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#555555" stroke="none">
-<path d="M310 2745 c246 -429 1494 -2565 1499 -2565 3 0 83 133 176 295 139
-240 172 292 181 279 7 -8 85 -141 174 -294 89 -154 165 -280 168 -280 4 0 84
-133 177 295 139 240 172 292 181 279 7 -8 85 -141 174 -294 89 -154 165 -280
-168 -280 4 0 332 562 730 1248 845 1458 778 1343 755 1316 -10 -12 -346 -497
--748 -1077 -401 -581 -733 -1057 -736 -1057 -8 0 -231 320 -236 340 -3 11 731
-1292 1019 1780 61 102 -60 -68 -562 -795 -303 -440 -557 -806 -564 -812 -9
--10 -41 30 -146 183 -74 107 -134 199 -133 203 1 4 155 273 343 597 188 324
-351 605 362 624 46 81 -32 -29 -397 -558 -209 -303 -384 -550 -389 -549 -5 2
--184 255 -398 563 -214 307 -396 568 -404 579 -24 32 20 -45 383 -669 189
--325 342 -595 339 -600 -12 -28 -264 -381 -270 -379 -4 1 -266 375 -582 830
--317 455 -578 830 -581 833 -8 6 -45 71 554 -959 277 -476 502 -867 501 -871
--9 -20 -234 -340 -239 -340 -3 0 -343 485 -754 1078 -412 592 -753 1082 -758
-1087 -6 6 0 -8 13 -30z m2325 -1589 c63 -110 114 -202 113 -206 -9 -19 -234
--340 -239 -340 -12 0 -233 326 -234 345 0 26 227 417 236 408 4 -5 60 -98 124
--207z"/>
-</g>
-</svg>
-</div>
-
-<form id="header-search" class="hide-mobile">
-<button type="submit"><i class="material-icons">search</i></button>
-<input type="text" placeholder="Search" maxlength="40" required="required"/>
-</form>
-
-<a href = "javascript:void(0)" onclick = "document.getElementById('popup-filters').style.display='block';document.getElementById('popupbg').style.display='block'">
-<div id="header-filter" class="hide-mobile"><i class="material-icons">sort</i></div>
-</a>
-
-<div id="header-right">
-<a href = "javascript:void(0)" onclick = "document.getElementById('logged-in-user-panel').style.display='block';document.getElementById('popupbg').style.display='block'">
-<span class="header-right-count">9</span>
-<img src="http://wallions.com/wp-content/uploads/2016/08/Logo-square-large-150x150.png">
-</a>
-</div>
-
-<div id="header-user-portal" class="hide-mobile">
-<a href = "javascript:void(0)" onclick = "document.getElementById('user-portal').style.display='block';document.getElementById('popupbg').style.display='block'">
-<i class="material-icons">account_circle</i>
-</a>
-</div>
-
-</header>
-
+{% block main %}
+{% include '_shared/header.html' %}
 
 <main style="margin-top: 60px;">
 {% for post in posts.object_list %}
+<a href="http://wallions.com/24175">
 <figure>
 <img src="{{ post.imgurl.url }}">
 <figcaption>{{ post.dimension }}</figcaption>
 </figure>
+</a>
 {% endfor %}
-</main>
 
 
-<a id="inifiniteLoader">
+<!-- <a id="inifiniteLoader">
 <svg class="spinner" width="25px" height="25px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
    <circle class="loadingcircle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 </svg>
-</a>
-
-
-
-
-
-
-
-
-
-
-<!-- Filters -->
-<div id="popup-filters">
-<div id="popup-filters-body">
-
-
-<div id="sorting-filters" class="sorting-filters-border">
-<div id="sorting-filters-left"><p>Sort by</p></div>
-<div id="sorting-filters-right" class="sorting-categories">
-<select>
-  <option value="newest">Newest</option>
-  <option value="random">Random</option>
-  <option value="most-viewed">Most Viewed</option>
-  <option value="most-favorited">Most Favorited</option>
-</select>
-</div>
-</div>
-
-
-<div id="sorting-filters" class="sorting-filters-border">
-<div id="sorting-filters-left"><p>Filter by</p></div>
-<div id="sorting-filters-right" class="sorting-categories">
-<select>
-  <option value="images">Images</option>
-  <option value="users">Users</option>
-</select>
-</div>
-</div>
-
-
-<div id="sorting-filters" class="sorting-filters-border">
-<div id="sorting-filters-left"><p>Orientation</p></div>
-<div id="sorting-filters-right" class="sorting-categories">
-<select>
-  <option value="newest">All</option>
-  <option value="random">Landscape</option>
-  <option value="most-viewed">Portrait</option>
-  <option value="most-favorited">Square</option>
-</select>
-</div>
-</div>
-
-
-<div id="sorting-filters" class="sorting-filters-border">
-<div id="sorting-filters-left"><p>Resolution</p></div>
-<div id="sorting-filters-right" class="sorting-resolution"><input type="text" maxlength="5"> x <input type="text" maxlength="5"></div>
-</div>
-
-
-<div id="sorting-filters" class="sorting-filters-border">
-<div id="sorting-filters-left"><p>Aspect Ratio</p></div>
-<div id="sorting-filters-right" class="sorting-ratio"><input type="text" maxlength="2"> : <input type="text" maxlength="2"></div>
-</div>
-
-
-<div id="sorting-filters" class="sorting-filters-border hide-mobile">
-<div id="sorting-filters-left"><p>Change Layout</p></div>
-<div id="sorting-filters-right" class="sorting-layout">
-<i class="material-icons">view_comfy</i>
-<i class="material-icons">view_compact</i>
-</div>
-</div>
-
-
-<div id="sorting-filters">
-<div id="sorting-filters-left"><p>Night Mode</p></div>
-<div id="sorting-filters-right" class="sorting-layout">
-<a href="#" onclick="setActiveStyleSheet('night'); return false;"><i class="material-icons">check</i></a>
-<a href="#" onclick="setActiveStyleSheet('default'); return false;"><i class="material-icons">clear</i></a>
-</div>
-</div>
-
-
-</div>
-
-<a href = "javascript:void(0)" onclick = "document.getElementById('popup-filters').style.display='none';document.getElementById('popupbg').style.display='none'">
-<div id="sorting-filters-close" class="hide-desktop"><p>Close</p></div>
-</a>
-
-</div>
-<!-- End Filters -->
-
-
-
-
-
-<!-- Mobile Search -->
-<form id="mobile-search" class="hide-desktop">
-<button type="submit"><i class="material-icons">search</i></button>
-<input type="text" placeholder="Search" maxlength="40" required="required"/>
-</form>
-<!-- End Mobile Search -->
-
-
-
-</body>
-</html>
+</a> -->
+{% include '_shared/search_filter.html' %}
+{% include '_shared/nav.html' %}
+{% endblock %}

@@ -1,0 +1,91 @@
+<!-- Filters -->
+<div id="popup-filters">
+<div id="popup-filters-body">
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Sort by</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="newest">Newest</option>
+  <option value="random">Random</option>
+  <option value="most-viewed">Most Viewed</option>
+  <option value="most-favorited">Most Favorited</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Filter by</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="images">Images</option>
+  <option value="users">Users</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Orientation</p></div>
+<div id="sorting-filters-right" class="sorting-categories">
+<select>
+  <option value="newest">All</option>
+  <option value="random">Landscape</option>
+  <option value="most-viewed">Portrait</option>
+  <option value="most-favorited">Square</option>
+</select>
+</div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Resolution</p></div>
+<div id="sorting-filters-right" class="sorting-resolution"><input type="text" maxlength="5"> x <input type="text" maxlength="5"></div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border">
+<div id="sorting-filters-left"><p>Aspect Ratio</p></div>
+<div id="sorting-filters-right" class="sorting-ratio"><input type="text" maxlength="2"> : <input type="text" maxlength="2"></div>
+</div>
+
+
+<div id="sorting-filters" class="sorting-filters-border hide-mobile">
+<div id="sorting-filters-left"><p>Change Layout</p></div>
+<div id="sorting-filters-right" class="sorting-layout">
+<i class="material-icons">view_comfy</i>
+<i class="material-icons">view_compact</i>
+</div>
+</div>
+
+
+<div id="sorting-filters">
+<div id="sorting-filters-left"><p>Night Mode</p></div>
+<div id="sorting-filters-right" class="sorting-layout">
+<a href="#" onclick="setActiveStyleSheet('night'); return false;"><i class="material-icons">check</i></a>
+<a href="#" onclick="setActiveStyleSheet('default'); return false;"><i class="material-icons">clear</i></a>
+</div>
+</div>
+
+
+</div>
+
+<a href = "javascript:void(0)" onclick = "document.getElementById('popup-filters').style.display='none';document.getElementById('popupbg').style.display='none'">
+<div id="sorting-filters-close" class="hide-desktop"><p>Close</p></div>
+</a>
+
+</div>
+<!-- End Filters -->
+
+
+
+
+
+<!-- Mobile Search -->
+<form id="mobile-search" class="hide-desktop">
+<button type="submit"><i class="material-icons">search</i></button>
+<input type="text" placeholder="Search" maxlength="40" required="required"/>
+</form>
+<!-- End Mobile Search -->

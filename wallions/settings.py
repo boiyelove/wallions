@@ -130,3 +130,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'pstatic'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediaroot')
 MEDIA_URL = '/media/'
+
+
+VERIFY_EMAILS = False
+SITE_URL = 'http://127.0.0.1:8000'
+SITE_NAME = 'Wallions.com'
